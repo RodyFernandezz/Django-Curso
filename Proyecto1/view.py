@@ -1,27 +1,24 @@
 from django.http import HttpResponse
 import datetime
 from django.template import Template, Context
+from django.template.loader import get_template
+
+
+class Persona (object):
+    def __init__(self, nombre, apellido):
+        self.nombre = nombre
+        self.apellido = apellido
 
 
 def saludo(request):  # Primera Vista
 
-    nombre = "Admin"
-
-    apellido = " root"
-
+    p1 = Persona(" Profesor Rody", "Fernandez")
+    temasDelCurso = ["Plantillas", "Modelos",
+                     "Fomularios", "Vistas", "Despliegues"]
     ahora = datetime.datetime.now()
-    doc_externo = open(
-        "K:/Users/Rody\Music/ProyectosDjango/Proyecto1/Proyecto1/plantillas/miplantilla.html")
-
-    plt = Template(doc_externo.read())
-
-    doc_externo.close()
-
-    ctx = Context({"nombre_persona": nombre,
-                   "apellido_persona": apellido, "momento_actual": ahora})
-
-    document = plt.render(ctx)
-
+    doc_externo = get_template('miplantilla.html')
+    document = doc_externo.render(
+        {"nombre_persona": p1.nombre, "apellido_persona": p1.apellido, "momento_actual": ahora, "temas": temasDelCurso})
     return HttpResponse(document)
 
 

@@ -1,12 +1,36 @@
 <html>
 
 <body>
-    <h3 style="color: red">
+    <h2 style="color: red">
         Hola Nde - Mi Plantilla
-    </h3>
+    </h2>
 
-    <p>El nombre es : {{nombre_persona}}{{apellido_persona}}</p>
-    <p>Estamos viendo Plantilla: {{momento_actual}}</p>
+    {%comment %} No temas Diseñador!
+    Ignora esta parte
+    {% endcomment %}
+
+    {% if nombre_persona == ' Profesor Rody'%}
+    <p>El curso lo imparte el profesor titular</p>
+    {% else %}
+    <p>El curso lo imparte el profesor Suplente</p>
+    {% endif %}
+
+    <p>El nombre es : {{nombre_persona.upper}} {{apellido_persona.upper}}</p>
+    # Lower es en miuscula / upper es mayuscula
+    <p>Estamos viendo el tema de las Plantillas a d&iacute;a:
+        {{momento_actual.day} / {{momento_actual.month}} / {{momento_actual.year}}}</p>
+    <p><strong>Temas del curso:</strong></p>
+    <p>
+        <ul>
+            {% if temas %}
+            {% for elTema in temas %}
+            <li>{{elTema}}</li>
+            {% endfor %}
+            {% else %}
+            <p>No hay elementos que mostrar</p>
+            {%endif % }
+        </ul>
+    </p>  
 </body>
 
 </html>
