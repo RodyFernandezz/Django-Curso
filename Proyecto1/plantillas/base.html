@@ -1,0 +1,19 @@
+<html>
+
+<head>
+
+    <title>
+        {% block title %} {% endblock %}
+    </title>
+
+</head>
+
+<body>
+    <h1 style="background-color: darkgoldenrod; color:white; text-align:center">Ferreteria 4 Hermanos</h1>
+    {% include "superior/barra.html" %} {# plantilla de barra de la carpeta plantilla/superior #}
+    <h3 style=" text-align: center;">Herramientas y mas</h3>
+    {% block content %} {% endblock %}
+    <p style="background-color: darkgoldenrod; color:white; text-align:right">Gracias por su visita</p>
+</body>
+
+</html>

@@ -1,7 +1,8 @@
 <html>
 
 <body>
-    <h2 style="color: red">
+    {% include "superior/barra.html" %} {# plantilla de barra de la carpeta plantilla/superior #}
+    <h2 style="color: blue">
         Hola Nde - Mi Plantilla
     </h2>
 
@@ -10,27 +11,27 @@
     {% endcomment %}
 
     {% if nombre_persona == ' Profesor Rody'%}
-    <p>El curso lo imparte el profesor titular</p>
+    <p style="color:rgb(25, 170, 49)">El curso lo imparte el profesor titular</p>
     {% else %}
-    <p>El curso lo imparte el profesor Suplente</p>
+    <p style="color: blueviolet">El curso lo imparte el profesor Suplente</p>
     {% endif %}
 
     <p>El nombre es : {{nombre_persona.upper}} {{apellido_persona.upper}}</p>
-    # Lower es en miuscula / upper es mayuscula
+    {# Lower es en miuscula / upper es mayuscula #}
     <p>Estamos viendo el tema de las Plantillas a d&iacute;a:
-        {{momento_actual.day} / {{momento_actual.month}} / {{momento_actual.year}}}</p>
+        {{momento_actual.day}} / {{momento_actual.month}} / {{momento_actual.year}}</p>
     <p><strong>Temas del curso:</strong></p>
     <p>
         <ul>
             {% if temas %}
             {% for elTema in temas %}
-            <li>{{elTema}}</li>
+            <li>{{elTema}}</li> {# firts es para seleccionar solo la primera letra de una palabra#}
             {% endfor %}
             {% else %}
             <p>No hay elementos que mostrar</p>
-            {%endif % }
+            {%endif %}
         </ul>
-    </p>  
+    </p>
 </body>
 
 </html>
